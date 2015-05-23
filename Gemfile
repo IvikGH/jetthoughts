@@ -34,6 +34,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem "haml-rails", "~> 0.9"
+gem 'coveralls', require: false
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do
@@ -57,5 +60,5 @@ group :test do
   gem 'launchy', '~> 2.4'
   gem 'database_cleaner', '~> 1.3'
   gem "faker"
+  gem 'simplecov', :require => false
 end
-
