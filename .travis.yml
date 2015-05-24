@@ -16,4 +16,4 @@ deploy:
     repo: IvikGH/jetthoughts
     branch: dev
 notifications:
-  slack: skillup:o2zdkANmr9J8wW2Pv207WJ6anotifications:
+  slack: skillup:ljnCwIKRFb2tnBe5se4zpthg
