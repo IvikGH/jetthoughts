@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+- 2.2.2
+addons:
+  postgresql: '9.3'
+before_script:
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_jetthoughts_test;' -U postgres
+- bundle exec rake db:create db:migrate
+deploy:
+  api_key:
+    secure: vzTySKhYRhRhyAXH8VelHdumgzMP77bnvkmcT2PCnA5/ofI9CEE5FQhWW+4G0JoApR/HN3nCjeB4EruqDMoKptASKfPVsnDvlxRnUqmcl9xjepokf3WKkrCzqZ5aoOw6bpBEQ2CGATrlrIKR0KXGSA4nTQMM6Wg4UtDUWC4QZ78liVJO5YdPj2PTCS7I8po+3K9yEbkd5Otu4nvAEUUad+w47lrGzbv8FYdChsuraC2nIzbtc/R+rxuMLseyOAtff2E+JIicC/SHcFJNb7NiN6VldMAODh3iBnPhhbxnGeypdacV2UsGCcNNlrzOVrSGvKsw8+Wh8Zoq1FK8qJKIAXiOBVF2OLkOHvJcqAhoohaMMHSIoPL5OBXJ5F6vEW4gI9WEgJysPCU9Cffep0KpVJX+Wv0GrCNZVfXY9PdkOkLOqlPSvJPoA1679EPfpEhXcI8wvBWB9wSfAO9RfxxOYIQUa92QZXAs701pKNuU35vivmC+rzbbYdMJf/eLr7BoptS4euiJz32TfgFGe0CYRG68oHPu5wQU8svV+A7cNhEAPX5lpK0/0JpXGDj7OAVXYyrsycWm5U+iOGl/VXi5cVeIwTvQX5mg3/XmBy9ftsuCJaB4YOQc94xSCvLmRzP5j+dOo8zJKXik0MXKiol4ai12MsxpNG5FThOjfr+iUmQ=
