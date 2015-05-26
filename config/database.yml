@@ -7,12 +7,12 @@ default: &default
 development:
   <<: *default
   database: jetthoughts_development
-  password: LOCAL_POSTGESQL_PASSWD
+  password: ENV[LOCAL_POSTGESQL_PASSWD]
 
 test:
   <<: *default
   database: jetthoughts_test
-  password: LOCAL_POSTGESQL_PASSWD
+  password: ENV[LOCAL_POSTGESQL_PASSWD]
 
 production:
   <<: *default
