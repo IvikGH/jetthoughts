@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+100.times do
+  Post.create(
+          title:   Faker::Lorem.sentence( rand(3..10) ),
+          description: Faker::Lorem.sentence( rand(40..100) ),
+          user_id:  rand(1..20)
+  )
+end

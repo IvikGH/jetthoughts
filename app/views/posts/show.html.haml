@@ -5,7 +5,7 @@
   = @post.title
 %p
   %b Description:
-  = @post.description
+  = textilize(@post.description).html_safe
 %p
   %b User:
   = @post.user_id

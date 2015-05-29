@@ -38,8 +38,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "haml-rails", "~> 0.9"
 gem 'coveralls', require: false
-
+gem 'github-markup', '~> 1.3.3'
+gem 'RedCloth', '~> 4.2.9'
 gem 'rails_12factor', group: :production
+gem 'better_errors', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,12 +57,12 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'guard-rspec', require: false
   gem 'rubocop', require: false
+  gem "faker"
 end
 
 group :test do
   gem 'capybara', '~> 2.4.0'
   gem 'launchy', '~> 2.4'
   gem 'database_cleaner', '~> 1.3'
-  gem "faker"
   gem 'simplecov', :require => false
 end
