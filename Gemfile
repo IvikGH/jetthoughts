@@ -42,6 +42,7 @@ gem 'github-markup', '~> 1.3.3'
 gem 'RedCloth', '~> 4.2.9'
 gem 'rails_12factor', group: :production
 gem 'better_errors', group: :development
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
