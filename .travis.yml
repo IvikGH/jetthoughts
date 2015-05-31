@@ -1,20 +1,22 @@
 language: ruby
 rvm:
-  - 2.2.2
+- 2.2.2
 addons:
   postgresql: '9.3'
 sudo: false
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_jetthoughts_test;' -U postgres
-  - bundle exec rake db:create db:migrate
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_jetthoughts_test;' -U postgres
+- bundle exec rake db:create db:migrate
+notifications:
+  slack: skillup:ljnCwIKRFb2tnBe5se4zpthg
 deploy:
   provider: heroku
   api_key:
-    secure: n4INEG7+RvJyBKKsDcSGsO3kv6QSfUo7etm02xlvG/j7srePHs0wKeoOozpvcW8oROmS98NxZw9it58mq6PA+iEnUFWwjXIC+8tOP8pBPLaNL5IIAnVxMoMF3zamOsv6LJ1r9Ec9Tmxsl8+VJHbiypsvYKA3D8Zm+HuGiI/ZT36sGG5GV52z9YhcZ/n81gZ/yyh/qqIsqnt9DzKHj7RsdYfCjK02BVRonZiFjZB0KEd9Xn9NR7pixJb5Hk3jnIvfh+cn0jbpPRVjTj3UxDm4fvP43A1SpRKHDXUZrC2+AOR1J2NdmMbjWtxKm1yopYk4ahTB97nRjVAWbNaCevsd0YQ1KUldrzoPwhZ6aU3M8vdA9rfd+tWttSvY3huSiPyrs53k9f963/vJnOMbnGBzojeGanYAxTRxe90Jp6M6ya0QxxXAUKCgPJaSx3y6WjLyAys/OfjgyY9K8tVyv9c3lzel2cSNoi7LopbsPl7xecrPElUrR4+BvGt4/CKDe1Z4id8BEO/GKgtgJaqbq3re8kIuOOyOxhsw6SaTjkgov3zhtwLz92m1Xghyj3JSCmoqxGcbTBtK1T+zMfvwB3iyoWS5RfVTfohWRjNluTCI5UPulwvboXNvql80eMbaqFqWf+YUx5TFUzikkQVCMPt7sGnkaNFtXrZdu7UTQA0STsg=
+    secure: rmTXZla0OqB/sg9P/IwbTB8m6nY+oKy0f8y7pq5SezdiJABr5X9N69R9icc6rzV+dF0upJXSYUks4RzSwcENAcPBBmbXVsJtrTEnqjylSuxqiWhFNUYjjBdRgXoOVcl/M1XVjlgz0OfER3hXY/pWx8P+hNBy60BfJg3P+pJQ7nKNTxfu27dd32puxlNDP2jUX8lKFuUPTiGOBVc6Mj8ieW2dxK9JxCc2ZeOn3lm7fR/h5/UjTmxvlvuzTFC+O48Y7q089+aLi74eZT3wnAdnVsdgzxpd9J3IKfDg2oSXYPJlhPsJtiKa9jS42bhOM72y8Pc7znhJ6KyUw8xJAjLE3VBT7QF8LWmV8hZvP7rP+tKpMoH1neCxNJyfHHIavNiHeMMEsx9x9/JyjZgOzs78zMpwWPDs/J4rO8hiQ9wrTq30WkXqtUzmZUfwUfSD+eVdHaO71UamEwMrc+nFvw0sUNXC+ii2XUNDKaSl/la8S2O8I/+/jb+rbBMH4XYsGAHFChgdSaEaCd5HX7P7mSUd2HG+2KyiShuAmxwwI7AEvm4Ta/0hGvCdO8EBHyoN+p9XbkB0YX7dmcteK6TvRRPgHfLkdCJxUBag1C2DfPFO0AHiK2a0UHFYyHBXFrI55/WaRZ7muQ8ElmNaDRK10YBIUrMGdIa9P+o4KaeQtNjstdg=
   app: jetthoughts_task
+    # dev: jetthoughts_task_dev
+    # master: jetthoughts_task
+    all_branches: true
   on:
     repo: IvikGH/jetthoughts
-    branch: dev
-notifications:
-  slack: skillup:ljnCwIKRFb2tnBe5se4zpthg
