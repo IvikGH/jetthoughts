@@ -15,6 +15,7 @@ deploy:
   app: jetthoughts_task
   on:
     repo: IvikGH/jetthoughts
+    all_branches: true
     # branch: dev
 notifications:
   slack: skillup:ljnCwIKRFb2tnBe5se4zpthg
