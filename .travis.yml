@@ -12,7 +12,7 @@ deploy:
   provider: heroku
   api_key:
     secure: n4INEG7+RvJyBKKsDcSGsO3kv6QSfUo7etm02xlvG/j7srePHs0wKeoOozpvcW8oROmS98NxZw9it58mq6PA+iEnUFWwjXIC+8tOP8pBPLaNL5IIAnVxMoMF3zamOsv6LJ1r9Ec9Tmxsl8+VJHbiypsvYKA3D8Zm+HuGiI/ZT36sGG5GV52z9YhcZ/n81gZ/yyh/qqIsqnt9DzKHj7RsdYfCjK02BVRonZiFjZB0KEd9Xn9NR7pixJb5Hk3jnIvfh+cn0jbpPRVjTj3UxDm4fvP43A1SpRKHDXUZrC2+AOR1J2NdmMbjWtxKm1yopYk4ahTB97nRjVAWbNaCevsd0YQ1KUldrzoPwhZ6aU3M8vdA9rfd+tWttSvY3huSiPyrs53k9f963/vJnOMbnGBzojeGanYAxTRxe90Jp6M6ya0QxxXAUKCgPJaSx3y6WjLyAys/OfjgyY9K8tVyv9c3lzel2cSNoi7LopbsPl7xecrPElUrR4+BvGt4/CKDe1Z4id8BEO/GKgtgJaqbq3re8kIuOOyOxhsw6SaTjkgov3zhtwLz92m1Xghyj3JSCmoqxGcbTBtK1T+zMfvwB3iyoWS5RfVTfohWRjNluTCI5UPulwvboXNvql80eMbaqFqWf+YUx5TFUzikkQVCMPt7sGnkaNFtXrZdu7UTQA0STsg=
-  app: jetthoughts_task
+  # app: jetthoughts_task
   on:
     repo: IvikGH/jetthoughts
     all_branches: true
