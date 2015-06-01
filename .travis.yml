@@ -17,5 +17,6 @@ deploy:
     repo: IvikGH/jetthoughts
     all_branches: true
     # branch: dev
+    run: "rake db:migrate"
 notifications:
   slack: skillup:ljnCwIKRFb2tnBe5se4zpthg
