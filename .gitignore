@@ -17,6 +17,7 @@
 .ruby-version
 jetthoughts.sublime-project
 jetthoughts.sublime-workspace
+todo.txt
 
 #security
 .env
