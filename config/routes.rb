@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'posts#index'
   resources :posts
+  get '/users', to: 'pages#users_all'
+  get '/users/:id/edit', to: 'pages#user_profile_edit', as: "edit_profile"
+  patch '/users/:id', to: 'pages#user_profile_update', as: 'update_profile'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
