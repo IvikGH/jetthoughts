@@ -42,7 +42,9 @@ Rails.application.configure do
   #gem Devise section
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  # Rails.application.configure do
+  # Email
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
     :port      => 587,
