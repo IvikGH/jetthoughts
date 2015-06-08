@@ -76,4 +76,20 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #gem Devise section
+  config.action_mailer.default_url_options = { host: '3000jetthoughtstest.herokuapp.com' }
+
+  # Email
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    address: "smtp.mandrillapp.com",
+    port: 587,
+    authentication: 'login',
+    user_name: ENV["MANDRILL_USERNAME"],
+    password:  ENV["MANDRILL_API_KEY"],
+    enable_starttls_auto: true,
+    domain: 'aspiringwebdev.com'
+  }
 end
