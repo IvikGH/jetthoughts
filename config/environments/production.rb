@@ -78,7 +78,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #gem Devise section
-  config.action_mailer.default_url_options = { host: '3000jetthoughtstest.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'jetthoughtstest.herokuapp.com' }
 
   # Email
   config.action_mailer.delivery_method = :smtp
