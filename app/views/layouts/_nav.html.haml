@@ -11,8 +11,6 @@
   = link_to 'Войти', new_user_session_path
   или #{link_to 'Зарегистрироваться', new_user_registration_path}
 %hr
-= link_to 'edit_user_password', edit_user_password_path
-%br
 = link_to 'edit_user_registration', edit_user_registration_path
 %br
 - if user_signed_in?
