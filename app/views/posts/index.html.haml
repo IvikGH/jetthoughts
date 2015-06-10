@@ -4,6 +4,7 @@
 %table
   %thead
     %tr
+      %th Image
       %th Title
       %th Description
       %th User
@@ -14,6 +15,7 @@
   %tbody
     - @posts.each do |post|
       %tr
+        %td= image_tag post.image.url(:thumb)
         %td= post.title
         %td= post.description
         %td= post.user_id
