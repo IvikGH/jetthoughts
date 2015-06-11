@@ -7,8 +7,18 @@
   = textilize(@post.description).html_safe
 %p
   %b User:
-  = @post.user_id
+  = @post.user.full_name
+
+= form_for([@post, @post.comments.build], remote: true) do |f|
+
+  %p
+    = f.label :body
+    = f.text_area :body
+  %p
+    = f.submit
 
 = link_to 'Edit', edit_post_path(@post)
 \|
 = link_to 'Back', posts_path
+%hr
+=render 'comments'

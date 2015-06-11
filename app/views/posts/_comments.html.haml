@@ -1,0 +1,13 @@
+#comments
+  %table
+    %thead
+      %tr
+        %th User
+        %th Body
+
+    %tbody
+      - @post.comments.each do |comment|
+        %tr
+          - if comment.persisted?
+            %td= comment.user.full_name
+            %td= comment.body

@@ -5,9 +5,9 @@
   %thead
     %tr
       %th Image
+      %th User
       %th Title
       %th Description
-      %th User
       %th
       %th
       %th
@@ -16,9 +16,9 @@
     - @posts.each do |post|
       %tr
         %td= image_tag post.image.url(:thumb)
+        %td= post.user.full_name
         %td= post.title
         %td= post.description
-        %td= post.user_id
         %td= link_to 'Show', post
         %td= link_to 'Edit', edit_post_path(post)
         %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
