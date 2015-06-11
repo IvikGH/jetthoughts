@@ -1,22 +1,15 @@
 %a{:href => posts_path, :class => "nav_link"} Объявления
 %a{:href => users_path, :class => "nav_link"} Пользователи
-%a{:href => "#", :class => "nav_link"} Войти / Выйти
-%a{:href => "#", :class => "nav_link"} Профиль
 - if user_signed_in?
+  = link_to 'Edit profile', edit_profile_path(current_user.id)
   %span
     Здравствуйте, #{current_user.email}
   = link_to 'Выйти', destroy_user_session_path, :method => :delete
-  /  = link_to 'Profile',
 - else
   = link_to 'Войти', new_user_session_path
   или #{link_to 'Зарегистрироваться', new_user_registration_path}
 %hr
-= link_to 'edit_user_registration', edit_user_registration_path
-%br
 - if user_signed_in?
-  = link_to 'user_profile_edit', edit_profile_path(current_user.id)
-%br
   = link_to 'facebook', user_omniauth_authorize_path(:facebook)
-%br
   = link_to 'vkontakte', user_omniauth_authorize_path(:vkontakte)
-%hr
+  %hr
