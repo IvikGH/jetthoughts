@@ -1,4 +1,13 @@
 %p#notice= notice
+
+= "Latitude = #{@user.latitude}"
+%br
+= "Longiude = #{@user.longitude}"
+%br
+
+= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}"
+
+
 %p
   %b Full name:
   = @user.full_name
@@ -20,7 +29,9 @@
 %p
   %b ZIP:
   = @user.zip
+
 = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLEMAP_BROWSER_APIKEY']}"
+
 = javascript_include_tag "google_map.js"
 
-#map-canvas
+#map-canvas{:data => {:latitude => @user.latitude, :longitude => @user.longitude}}

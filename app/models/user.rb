@@ -26,6 +26,11 @@ class User < ActiveRecord::Base
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
+  geocoded_by :get_address
+  # geocoded_by :address
+  # after_validation :geocode
+  after_validation :geocode, if: :changed?
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
     # Получить identity пользователя, если он уже существует
@@ -70,5 +75,9 @@ class User < ActiveRecord::Base
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+
+  def get_address
+    self.country + self.state + self.city + self.address
   end
 end
