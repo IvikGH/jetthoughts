@@ -1,5 +1,4 @@
 %p#notice= notice
-
 %p
   %b Full name:
   = @user.full_name
@@ -21,3 +20,7 @@
 %p
   %b ZIP:
   = @user.zip
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLEMAP_BROWSER_APIKEY']}"
+= javascript_include_tag "google_map.js"
+
+#map-canvas

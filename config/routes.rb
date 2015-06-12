@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :posts
   get '/users', to: 'pages#users_all'
   get '/users/:id/edit', to: 'pages#user_profile_edit', as: 'edit_profile'
+  get '/users/:id/show', to: 'pages#user_profile_show', as: 'show_profile'
   patch '/users/:id', to: 'pages#user_profile_update', as: 'update_profile'
 end

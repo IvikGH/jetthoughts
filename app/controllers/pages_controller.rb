@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def user_profile_edit
+    # googlemap_browser_apikey = ENV[GOOGLEMAP_BROWSER_APIKEY]
   end
 
   def user_profile_update
