@@ -22,7 +22,7 @@ class PagesController < ApplicationController
         format.html { redirect_to edit_profile_path, notice: 'Your profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
+        format.html { render :user_profile_edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
