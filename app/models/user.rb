@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :comments
+  belongs_to :role
+  # load_and_authorize_resource
 
   validates :login,
             :full_name,
@@ -27,8 +29,6 @@ class User < ActiveRecord::Base
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
   geocoded_by :get_address
-  # geocoded_by :address
-  # after_validation :geocode
   after_validation :geocode, if: :changed?
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
@@ -79,5 +79,22 @@ class User < ActiveRecord::Base
 
   def get_address
     self.country + self.state + self.city + self.address
+  end
+
+  def admin?
+    # byebug
+    # self.role.try(:name) == "admin"
+    self.role.try(:name) == 1
+
+    # self.role.name == "admin"
+  end
+  def moderator?
+    self.role.try(:name) == 2
+    # self.role.name == "moderator"
+  end
+  def user?
+    true
+    # self.role.try(:name) == 3
+    # self.role.name == "moderator"
   end
 end

@@ -1,8 +1,10 @@
 # require 'github/markup'
 
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  # before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+
+  load_and_authorize_resource
 
   # GET /posts
   # GET /posts.json
@@ -17,7 +19,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = current_user.posts.build # build is aliase for new
+    # @post = current_user.posts.build # build is aliase for new
+    @post.user_id = current_user.id # build is aliase for new
   end
 
   # GET /posts/1/edit
@@ -28,7 +31,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
 
-    @post = current_user.posts.build(post_params)
+    # @post = current_user.posts.build(post_params)
+    @post.user_id = current_user.id
     # @post.description = textilize(@post.description)
 
     respond_to do |format|
@@ -76,9 +80,9 @@ class PostsController < ApplicationController
   end
 
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+    # def set_post
+    #   @post = Post.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params

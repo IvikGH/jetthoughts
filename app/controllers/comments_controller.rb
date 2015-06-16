@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_post, only: [:create]
+  # before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  # before_action :set_post, only: [:create]
   before_action :authenticate_user!
-
+  load_and_authorize_resource :post
+  load_and_authorize_resource :comment, :through => :post
 
   # GET /comments
   # GET /comments.json
@@ -17,7 +18,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new
+    # @comment = Comment.new
   end
 
   # GET /comments/1/edit
@@ -27,7 +28,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = @post.comments.create(comment_params)
+    @comment.post_id = @post.id
     @comment.user_id = current_user.id
 
     respond_to do |format|
@@ -68,9 +69,9 @@ class CommentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+    # def set_comment
+    #   @comment = Comment.find(params[:id])
+    # end
 
     def set_post
       @post = Post.find(params[:post_id])

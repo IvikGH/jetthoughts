@@ -19,9 +19,14 @@
         %td= post.user.full_name
         %td= post.title
         %td= post.description
-        %td= link_to 'Show', post
-        %td= link_to 'Edit', edit_post_path(post)
-        %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+        %td
+          - if can? :read, post
+            = link_to 'Show', post
+        %td
+          -if can? :edit, post
+            = link_to 'Edit', edit_post_path(post)
+        %td
+          -if can? :destroy, post
+            = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br
 
