@@ -14,8 +14,9 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :comments
-  belongs_to :role
+  # belongs_to :role
   # load_and_authorize_resource
+  enum role: [ :admin, :moderator, :user, :guest ]
 
   validates :login,
             :full_name,
@@ -82,19 +83,12 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    # byebug
-    # self.role.try(:name) == "admin"
-    self.role.try(:name) == 1
-
-    # self.role.name == "admin"
+    self.role == "admin"
   end
   def moderator?
-    self.role.try(:name) == 2
-    # self.role.name == "moderator"
+    self.role == "moderator"
   end
   def user?
-    true
-    # self.role.try(:name) == 3
-    # self.role.name == "moderator"
+    self.role == "user"
   end
 end

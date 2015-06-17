@@ -5,14 +5,16 @@
     %tr
       %th ID
       %th Email
-      %th
-      %th
-      %th
+      %th Role
+      %th ZIP
 
   %tbody
     - @users.each do |user|
       %tr
         %td= user.id
         %td= user.email
-        / %td= link_to 'Show', user
-        / %td= link_to 'Edit', edit_user_path(user)
+        %td= user.role
+        %td= user.zip
+        - if can? :manage, :all
+        %td= link_to 'Show', user
+        %td= link_to 'Edit', edit_user_path(user)

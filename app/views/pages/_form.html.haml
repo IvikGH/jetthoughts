@@ -24,5 +24,15 @@
   .field
     = f.label :zip
     = f.text_field :zip
+  - if can? :manage, :all
+    = f.label(:role_admin, "Admin")
+    = f.radio_button(:role, :admin)
+    %br
+    = f.label(:role_moderator, "Moderator")
+    = f.radio_button(:role, :moderator)
+    %br
+    = f.label(:role_user, "User")
+    = f.radio_button(:role, :user)
+
   .actions
     = f.submit 'Save'
