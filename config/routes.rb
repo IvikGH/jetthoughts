@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
   match '/users/:id/finish_signup' => 'users#finish_signup',
         via: [:get, :patch],
