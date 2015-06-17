@@ -18,8 +18,10 @@
 jetthoughts.sublime-project
 jetthoughts.sublime-workspace
 todo.txt
+routes.txt
 
 #security
 .env
 .env.*
-routes.txt
+/config/cloudinary.yml
+

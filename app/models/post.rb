@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
 
   validates :title,
             :description, presence: true
+
+  mount_uploader :image, ImageUploader
 end

@@ -1,6 +1,7 @@
 = link_to 'User info', show_profile_path(id="#{@post.user.id}")
 %br
-/ = image_tag @post.image.url(:medium)
+- unless @post.image_url.nil?
+  = image_tag @post.image_url(:display)
 %p
   %b Title:
   = @post.title
