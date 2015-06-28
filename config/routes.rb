@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :posts do
-   resources :comments, except: [:show, :index]
+    resources :comments, except: [:show, :index]
   end
 
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         :as => :finish_signup
 
   root 'posts#index'
-  resources :posts
+  # resources :posts
   get '/users', to: 'pages#users_all'
   get '/users/:id/edit', to: 'pages#user_profile_edit', as: 'edit_profile'
   get '/users/:id/show', to: 'pages#user_profile_show', as: 'show_profile'
