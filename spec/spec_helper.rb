@@ -4,6 +4,8 @@
 # this file to always be loaded, without a need to explicitly require it in any
 # files.
 #
+require 'simplecov'
+SimpleCov.start
 # Given that it is always loaded, you are encouraged to keep this file as
 # light-weight as possible. Requiring heavyweight dependencies from this file
 # will add to the boot time of your test suite on EVERY test run, even for an
@@ -16,7 +18,7 @@
 # users commonly want.
 #
 require 'devise'
-
+require 'capybara/rspec'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -88,4 +90,8 @@ RSpec.configure do |config|
 =end
   # gem Devise option
   config.include Devise::TestHelpers, :type => :controller
+
+  #Use the fail_fast option to tell RSpec to abort the run on first failure.
+  config.fail_fast = true
 end
+

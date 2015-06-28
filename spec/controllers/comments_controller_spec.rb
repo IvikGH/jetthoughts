@@ -20,12 +20,15 @@ require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
 
+  let(:logged_user) { FactoryGirl.create(:logged_user) }
+
   # This should return the minimal set of attributes required to create a valid
   # Comment. As you add validations to Comment, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) do
+    {  :body => "Rspec valid body"  }
+        # skip("Add a hash of attributes valid for your model")
+  end
 
   let(:invalid_attributes) {
     skip("Add a hash of attributes invalid for your model")
@@ -34,30 +37,7 @@ RSpec.describe CommentsController, type: :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # CommentsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
-
-  describe "GET #index" do
-    it "assigns all comments as @comments" do
-      comment = Comment.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:comments)).to eq([comment])
-    end
-  end
-
-  describe "GET #show" do
-    it "assigns the requested comment as @comment" do
-      comment = Comment.create! valid_attributes
-      get :show, {:id => comment.to_param}, valid_session
-      expect(assigns(:comment)).to eq(comment)
-    end
-  end
-
-  describe "GET #new" do
-    it "assigns a new comment as @comment" do
-      get :new, {}, valid_session
-      expect(assigns(:comment)).to be_a_new(Comment)
-    end
-  end
+  let(:valid_session) { {user_id: logged_user.id} }
 
   describe "GET #edit" do
     it "assigns the requested comment as @comment" do
