@@ -19,6 +19,8 @@ jetthoughts.sublime-project
 jetthoughts.sublime-workspace
 todo.txt
 routes.txt
+coverage
+spec/*
 
 #security
 .env
