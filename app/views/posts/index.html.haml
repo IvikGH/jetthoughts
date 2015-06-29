@@ -20,7 +20,7 @@
         %tr
           %td= image_tag post.image.url(:thumbnail)
           / %td= cl_image_tag("icon_ajhucs.jpg", :transformation=>[{radius: "max", width: 100, height: 100, crop: :thumb}, {} ])
-          %td= post.user.full_name
+          %td= post.user.try(:full_name)
           %td= post.title
           %td= post.description
           %td
