@@ -11,9 +11,7 @@ class Ability
     elsif user.moderator?
       can :read, Post
       can :create, Post
-      can :update, Post do |item|
-        item.try(:user) == user
-      end
+      can :update, Post
       can :destroy, Post
       can :create, Comment
       can :update, Comment do |item|
