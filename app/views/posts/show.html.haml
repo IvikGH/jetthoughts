@@ -18,7 +18,8 @@
     = f.label :body
     = f.text_area :body
   %p
-    = f.submit
+    - if can? :create, Comment
+      = f.submit
 
 = link_to 'Edit', edit_post_path(@post)
 \|
