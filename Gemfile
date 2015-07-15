@@ -40,6 +40,7 @@ gem "haml-rails", "~> 0.9"
 gem 'coveralls', require: false
 gem 'github-markup', '~> 1.3.3'
 gem 'RedCloth', '~> 4.2.9'
+gem 'htmlentities', '~> 4.3.4'
 gem 'rails_12factor', group: :production
 gem 'better_errors', group: :development
 gem 'devise'
@@ -52,10 +53,9 @@ gem 'cancancan', '~> 1.10'
 gem 'carrierwave'
 gem 'cloudinary'
 
-
-
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call 'byebug' anywhere in the code
+  # to stop execution and get a debugger console
   gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -68,13 +68,13 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.4.0'
   gem 'guard-rspec', require: false
   gem 'rubocop', require: false
-  gem "faker"
+  gem 'faker'
 end
 
 group :test do
   gem 'capybara', '~> 2.4.0'
   gem 'launchy', '~> 2.4'
   gem 'database_cleaner', '~> 1.3'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
   gem 'poltergeist'
 end

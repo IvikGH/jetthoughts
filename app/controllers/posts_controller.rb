@@ -1,8 +1,8 @@
 # require 'github/markup'
 
 class PostsController < ApplicationController
-  # before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  # before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource
 
@@ -10,16 +10,18 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all.order(created_at: :desc)
+    @coder = HTMLEntities.new
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    coder = HTMLEntities.new
+    @post.description = textilize(coder.encode(@post.description))
   end
 
   # GET /posts/new
   def new
-    # @post = current_user.posts.build # build is aliase for new
     @post.user_id = current_user.id # build is aliase for new
   end
 
@@ -30,11 +32,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-
-    # @post = current_user.posts.build(post_params)
+    coder = HTMLEntities.new
     @post.user_id = current_user.id
-    # @post.description = textilize(@post.description)
-
     respond_to do |format|
       if @post.save
         UserMailer.post_created(@post).deliver_now
@@ -50,9 +49,11 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    coder = HTMLEntities.new
+
     respond_to do |format|
       @post.update(post_params)
-      # @post.description = textilize(@post.description)
+      # @post.description = textilize(coder.encode(html_escape(@post.description)))
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
