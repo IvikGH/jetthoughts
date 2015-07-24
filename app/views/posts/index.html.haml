@@ -23,6 +23,7 @@
           %td= post.user.try(:full_name)
           %td= post.title
           %td= post.description
+          / textilize(@coder.encode(post.description))
           %td
             - if can? :read, post
               = link_to 'Show', post

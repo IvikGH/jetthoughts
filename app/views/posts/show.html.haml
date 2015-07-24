@@ -1,4 +1,8 @@
 = link_to 'User info', show_profile_path(id="#{@post.user.id}")
+%hr
+= link_to 'ВКонтакте','#', class: ["goodshare", "socshare"], data: { type: "vk"}
+= image_tag "icon-vk.png", class: ["goodshare", "socshare"], data: { type: 'vk',      text: @post.description, url: request.original_url}
+%hr
 %br
 - unless @post.image_url.nil?
   = image_tag @post.image_url(:display)
@@ -25,4 +29,7 @@
 \|
 = link_to 'Back', posts_path
 %hr
+%script{type: "text/javascript", src: "https://rawgit.com/iacmru/goodshare.js/master/goodshare-custom.js"}
+
+/ %script type="text/javascript" src="https://rawgit.com/iacmru/goodshare.js/master/goodshare-custom.js"
 =render 'comments'
